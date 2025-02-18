@@ -1,14 +1,24 @@
-from django.shortcuts import render
 from django.http import HttpResponse
-# Create your views here.
+from django.shortcuts import render
+
 
 def saludar(request):
-    return HttpResponse("Hola desde Djangoooo")
+    return HttpResponse("Hola desde Django!")
 
-def saludar_con_parametros(request, nombre:str, apellido:str):
-    nombre = nombre.capitalize()
-    apellido = apellido.capitalize()
-    return HttpResponse(f"Mi nombre es {nombre} y mi apellido {apellido}")
 
-def index (request):
-    return render(request, "core/index.html")
+def saludar_con_etiqueta(request):
+    return HttpResponse("<h1>Hola desde Django con etiquetas!</h1>")
+
+
+def saludar_con_parametros(request, nombre: str, apellido: str):
+    nombre = nombre.capitalize()  # Capitaliza la primera letra del nombre
+    apellido = apellido.capitalize()  # Capitaliza la primera letra del apellido
+    return HttpResponse(f"Hola {nombre} {apellido} desde Django con parámetros!")
+
+
+def index(request):
+    from datetime import datetime
+
+    año_actual = datetime.now().year
+    contexto = {"año": año_actual}
+    return render(request, "core/index.html", contexto)
