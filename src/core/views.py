@@ -1,9 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-
 def saludar(request):
-    return HttpResponse("Hola desde Django!")
+    return HttpResponse("Mi Gordita Milagrossssss!")
 
 
 def saludar_con_etiqueta(request):
